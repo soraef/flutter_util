@@ -12,6 +12,7 @@ class Entities<Id, E extends Entity<Id>> extends Equatable {
   const Entities(this._entities);
 
   factory Entities.empty() => Entities<Id, E>(const {});
+
   factory Entities.fromIterable(Iterable<E> entities) {
     return Entities<Id, E>({for (final entity in entities) entity.id: entity});
   }
