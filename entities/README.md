@@ -27,17 +27,14 @@ class Todo implements Entity<String> {
 ```
 
 Then optionally give an alias to Entities. 
-
 ```dart
 typedef Todos = Entities<String, Todo>;
 ```
 
 You are now ready to immutably manage a set of Entity.
-
 This example makes available the Todos class, which has methods to add and remove Todo immutably.
 
 You can define a todo set from `Todos.empty()`.
-
 ```dart
 final todo1 = Todo("1", "todo1");
 final todo2 = Todo("2", "todo2");
@@ -47,7 +44,6 @@ final todos = Todos.empty();
 ```
 
 You can use the `put(Todo todo)` method to get a new Todos with todo added.
-
 ```dart
 final putTodos = todos.put(todo1);
 print(putTodos);
@@ -55,7 +51,6 @@ print(putTodos);
 ```
 
 You can add multiple todo at the same time with the `putAll(Iterable<Todo> todo)` method.
-
 ```dart
 final putAllTodos = todos.putAll([todo1, todo2, todo3]);
 print(putAllTodos);
@@ -63,7 +58,6 @@ print(putAllTodos);
 ```
 
 The `remove(Todo todo)` method removes the todo, and you get new todos.
-
 ```dart
 final removeTodos = putAllTodos.remove(todo1);
 print(removeTodos);
@@ -71,7 +65,6 @@ print(removeTodos);
 ```
 
 The `removeAll(Iterable<Todo> todo)` method allows you to remove multiple todo at the same time.
-
 ```dart
 final removeAllTodos = putAllTodos.removeAll([todo1, todo2, todo3]);
 print(removeAllTodos);
@@ -79,7 +72,6 @@ print(removeAllTodos);
 ```
 
 Since these methods are immutable, the new todos will be a different object than the original todos.
-
 ```dart
 expect(todos == putTodos, false);
 expect(todos == putAllTodos, false);
