@@ -44,7 +44,7 @@ class Entities<Id, E extends Entity<Id>> extends Equatable {
 
   Entities<Id, E> remove(E entity) {
     return Entities<Id, E>(
-      {..._entities}..removeWhere((id, entity) => id == entity.id),
+      {..._entities}..removeWhere((id, _) => id == entity.id),
     );
   }
 
