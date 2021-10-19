@@ -1,7 +1,8 @@
 name: entities
-description: A new Flutter package project.
-version: 0.0.1
-homepage:
+description: Provide utility classes to operate entities in an immutable way.
+version: 0.0.2
+author: Sora Fukui
+homepage: https://github.com/soraef/flutter_util/tree/master/entities
 
 environment:
   sdk: ">=2.13.0 <3.0.0"

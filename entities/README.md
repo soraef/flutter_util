@@ -1,14 +1,18 @@
 # entities
 
-A new Flutter package project.
+Provide utility classes to operate entities in an immutable way.
 
-## Getting Started
+## This Package
+The Entity is defined as a class with an Id, as shown below.
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+```dart
+abstract class Entity<Id> {
+  Id get id;
+}
+```
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+This package provides the Entities class, which is a set of Entity.
+Entities is an immutable class that has a convenient API.
+
+
+
