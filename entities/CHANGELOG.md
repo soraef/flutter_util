@@ -6,3 +6,4 @@
 ## 0.0.2
 
 * Update README.md
+* fix remove method
