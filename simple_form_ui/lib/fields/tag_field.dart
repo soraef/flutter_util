@@ -6,13 +6,13 @@ import 'package:simple_form_ui/common/color_circle.dart';
 import 'package:simple_form_ui/common/field_label.dart';
 import 'package:simple_form_ui/simple_form/simple_form_style.dart';
 
-class Tag extends Equatable implements Entity<String> {
+class TagItem extends Equatable implements Entity<String> {
   @override
   final String id;
   final String name;
   final Color color;
 
-  const Tag({
+  const TagItem({
     required this.id,
     required this.name,
     required this.color,
@@ -25,28 +25,29 @@ class Tag extends Equatable implements Entity<String> {
       ];
 }
 
-typedef Tags = Entities<String, Tag>;
+typedef TagItems = Entities<String, TagItem>;
 
-class SFTagField extends ReactiveFormField<Tags, Tags> {
+class SFTagField extends ReactiveFormField<TagItems, TagItems> {
   // ignore: use_key_in_widget_constructors
   SFTagField({
     Key? key,
     required Widget label,
     // required List<Tag> tags,
     required String formControlName,
-    required Future<Tags?> Function(BuildContext context, Tags selectedTags)
+    required Future<TagItems?> Function(
+            BuildContext context, TagItems selectedTags)
         onTapSelectTags,
     SFStyle style = const SFStyle(),
   }) : super(
             formControlName: formControlName,
             builder: (field) {
-              final selectedTags = field.value ?? Tags.empty();
+              final selectedTags = field.value ?? TagItems.empty();
               return Builder(builder: (context) {
                 return InkWell(
                   onTap: () async {
                     final result = await onTapSelectTags(context, selectedTags);
                     print(result);
-                    field.didChange(result ?? Tags.empty());
+                    field.didChange(result ?? TagItems.empty());
                   },
                   child: FieldLabel(
                     label: label,
@@ -91,10 +92,10 @@ class SFTagField extends ReactiveFormField<Tags, Tags> {
 
 class TagField2 extends StatelessWidget {
   final Widget label;
-  final List<Tag> tags;
+  final List<TagItem> tags;
   final String formControlName;
   final SFStyle style;
-  final Future<Tags> Function() selectTags;
+  final Future<TagItems> Function() selectTags;
 
   const TagField2({
     Key? key,
@@ -108,8 +109,8 @@ class TagField2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ReactiveFormConsumer(builder: (context, form, child) {
-      final control = form.control(formControlName) as FormControl<Tags>;
-      final selectedTags = control.value ?? Tags.empty();
+      final control = form.control(formControlName) as FormControl<TagItems>;
+      final selectedTags = control.value ?? TagItems.empty();
       return InkWell(
         onTap: () async {
           final result = await selectTags();
@@ -121,7 +122,7 @@ class TagField2 extends StatelessWidget {
           child: ReactiveFormConsumer(
             builder: (context, form, _) {
               final control =
-                  form.control(formControlName) as FormControl<Set<Tag>>;
+                  form.control(formControlName) as FormControl<Set<TagItem>>;
               final selectedTags = control.value ?? {};
               return Wrap(
                 children: selectedTags.isNotEmpty
@@ -164,8 +165,8 @@ class TagField2 extends StatelessWidget {
 }
 
 class TagSelect extends StatefulWidget {
-  final Tags selectedTags;
-  final List<Tag> tagOptions;
+  final TagItems selectedTags;
+  final List<TagItem> tagOptions;
   const TagSelect({
     Key? key,
     required this.selectedTags,
@@ -177,7 +178,7 @@ class TagSelect extends StatefulWidget {
 }
 
 class _TagSelectState extends State<TagSelect> {
-  late Tags _selectedTags;
+  late TagItems _selectedTags;
 
   @override
   void initState() {
@@ -248,11 +249,11 @@ class _TagSelectState extends State<TagSelect> {
   }
 }
 
-class ReactiveTagField extends ReactiveFormField<Set<Tag>, Set<Tag>> {
+class ReactiveTagField extends ReactiveFormField<Set<TagItem>, Set<TagItem>> {
   // ignore: use_key_in_widget_constructors
   ReactiveTagField({
     required String formControlName,
-    required List<Tag> tagItems,
+    required List<TagItem> tagItems,
   }) : super(
             formControlName: formControlName,
             builder: (field) {

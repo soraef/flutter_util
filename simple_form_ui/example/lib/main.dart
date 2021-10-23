@@ -30,8 +30,8 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     // initPlatformState();
     form = FormGroup({
-      "tag": FormControl<Tags>(
-        value: Tags.empty(),
+      "tag": FormControl<TagItems>(
+        value: TagItems.empty(),
       ),
       "duration": FormControl<Duration>(
         value: Duration.zero,
@@ -90,18 +90,18 @@ class _MyAppState extends State<MyApp> {
                 label: Text("タグ"),
                 formControlName: "tag",
                 onTapSelectTags: (context, selectedTags) {
-                  return Navigator.of(context).push<Tags?>(
+                  return Navigator.of(context).push<TagItems?>(
                     MaterialPageRoute(
                       builder: (context) => Scaffold(
                         body: TagSelect(
                           selectedTags: selectedTags,
                           tagOptions: [
-                            Tag(
+                            TagItem(
                               id: "1",
                               name: "ABC",
                               color: Colors.green,
                             ),
-                            Tag(
+                            TagItem(
                               id: "2",
                               name: "abc",
                               color: Colors.grey,
