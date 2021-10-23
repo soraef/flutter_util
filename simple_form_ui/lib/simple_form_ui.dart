@@ -3,15 +3,8 @@
 // To add platforms, run `flutter create -t plugin --platforms <platforms> .` under the same
 // directory. You can also find a detailed instruction on how to add platforms in the `pubspec.yaml` at https://flutter.dev/docs/development/packages-and-plugins/developing-packages#plugin-platforms.
 
-import 'dart:async';
-
-import 'package:flutter/services.dart';
-
-class SimpleFormUi {
-  static const MethodChannel _channel = MethodChannel('simple_form_ui');
-
-  static Future<String?> get platformVersion async {
-    final String? version = await _channel.invokeMethod('getPlatformVersion');
-    return version;
-  }
-}
+export 'simple_form/simple_form.dart';
+export 'simple_form/simple_form_style.dart';
+export 'fields/simple_form_header.dart';
+export 'fields/tag_field.dart';
+export 'fields/title_text.dart';
