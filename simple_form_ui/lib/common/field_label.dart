@@ -29,3 +29,34 @@ class FieldLabel extends StatelessWidget {
     );
   }
 }
+
+class FieldLabelVertical extends StatelessWidget {
+  final Widget label;
+  final Widget child;
+  final SFStyle style;
+  const FieldLabelVertical({
+    Key? key,
+    required this.label,
+    required this.child,
+    required this.style,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: style.fieldPadding,
+      child: Column(
+        children: [
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
+              child: label,
+              padding: EdgeInsets.zero,
+            ),
+          ),
+          child,
+        ],
+      ),
+    );
+  }
+}

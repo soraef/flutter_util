@@ -22,7 +22,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // String _platformVersion = 'Unknown';
   late FormGroup form;
 
   @override
@@ -30,8 +29,8 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     // initPlatformState();
     form = FormGroup({
-      "tag": FormControl<TagItems>(
-        value: TagItems.empty(),
+      "tag": FormControl<Set<String>>(
+        value: {"a", "b"},
       ),
       "duration": FormControl<Duration>(
         value: Duration.zero,
@@ -39,35 +38,10 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  // // Platform messages are asynchronous, so we initialize in an async method.
-  // Future<void> initPlatformState() async {
-  //   String platformVersion;
-  //   // Platform messages may fail, so we use a try/catch PlatformException.
-  //   // We also handle the message potentially returning null.
-  //   try {
-  //     platformVersion =
-  //         await SimpleFormUi.platformVersion ?? 'Unknown platform version';
-  //   } on PlatformException {
-  //     platformVersion = 'Failed to get platform version.';
-  //   }
-
-  //   // If the widget was removed from the tree while the asynchronous platform
-  //   // message was in flight, we want to discard the reply rather than calling
-  //   // setState to update our non-existent appearance.
-  //   if (!mounted) return;
-
-  //   setState(() {
-  //     _platformVersion = platformVersion;
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        // appBar: AppBar(
-        //   title: const Text('Plugin example app'),
-        // ),
         body: SafeArea(
           child: SimpleForm(
             form: form,
@@ -89,29 +63,11 @@ class _MyAppState extends State<MyApp> {
               SFTagField(
                 label: Text("タグ"),
                 formControlName: "tag",
-                onTapSelectTags: (context, selectedTags) {
-                  return Navigator.of(context).push<TagItems?>(
-                    MaterialPageRoute(
-                      builder: (context) => Scaffold(
-                        body: TagSelect(
-                          selectedTags: selectedTags,
-                          tagOptions: [
-                            TagItem(
-                              id: "1",
-                              name: "ABC",
-                              color: Colors.green,
-                            ),
-                            TagItem(
-                              id: "2",
-                              name: "abc",
-                              color: Colors.grey,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  );
-                },
+                tagsOption: [
+                  "a",
+                  "b",
+                  "c",
+                ],
               ),
               const Divider(),
             ],
