@@ -551,6 +551,7 @@ class ReactiveTagChoice extends ReactiveFormField<Set<String>, Set<String>> {
                 InputChip(
                   avatar: const Icon(Icons.add),
                   label: const Text("タグを追加"),
+                  visualDensity: VisualDensity.compact,
                   // padding: const EdgeInsets.symmetric(horizontal: 4),
                   // labelPadding: const EdgeInsets.symmetric(horizontal: 8),
                   onSelected: (value) async {
