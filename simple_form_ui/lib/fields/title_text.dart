@@ -7,6 +7,7 @@ class SFTitleText<T> extends StatelessWidget {
   final SFStyle style;
   final String formControlName;
   final String Function(T) valueToString;
+  final TextAlign align;
 
   const SFTitleText({
     Key? key,
@@ -14,6 +15,7 @@ class SFTitleText<T> extends StatelessWidget {
     required this.title,
     required this.style,
     required this.valueToString,
+    this.align = TextAlign.center,
   }) : super(key: key);
 
   @override
@@ -26,10 +28,11 @@ class SFTitleText<T> extends StatelessWidget {
 
         return Container(
           padding: style.fieldPadding,
-          alignment: Alignment.centerLeft,
+          // alignment: Alignment.centerLeft,
           child: Text(
             title,
             style: style.titleTextStyle,
+            textAlign: align,
           ),
         );
       },
