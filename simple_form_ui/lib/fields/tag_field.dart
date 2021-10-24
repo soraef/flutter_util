@@ -496,7 +496,7 @@ class _SFTagFieldState extends State<SFTagField> {
   void addTagsOption(String newTagName) {
     if (newTagName.isNotEmpty && !tagsOption.contains(newTagName)) {
       setState(() {
-        tagsOption.add(newTagName);
+        tagsOption = [...tagsOption, newTagName];
       });
     }
   }
